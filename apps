@@ -1,0 +1,30 @@
+#!/bin/bash
+
+while [[ $# > 0 ]]
+do
+key="$1"
+
+case $key in
+    install)
+    echo "Installing $2"
+    sudo apt-get -y install $2
+    shift # past argument
+    ;;
+    uninstall)
+    echo "Uninstalling $2"
+    sudo apt-get -y remove $2
+    shift # past argument
+    ;;
+    update)
+    echo "Updating system"
+    sudo apt-get update
+    sudo apt-get -y upgrade
+    shift # past argument
+    ;;
+    *)
+    echo "Usage"
+            # unknown option
+    ;;
+esac
+shift # past argument or value
+done
